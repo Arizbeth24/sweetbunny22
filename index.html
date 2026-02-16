@@ -1,22 +1,84 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>SweetBunny22</title>
-  <style>
-    body {
-      margin: 0;
-      background: #f5f5f5;
-    }
-    embed {
-      width: 100%;
-      height: 100vh;
-    }
-  </style>
+<meta charset="UTF-8">
+<title>SweetBunny22</title>
+
+<style>
+:root {
+  --bg: #ffffff;
+  --text: #111111;
+  --bar: #f2f2f2;
+}
+
+body.dark {
+  --bg: #121212;
+  --text: #f5f5f5;
+  --bar: #1e1e1e;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, sans-serif;
+}
+
+#topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 10px;
+  background: var(--bar);
+  border-bottom: 1px solid #9993;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  z-index: 10;
+}
+
+button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+iframe {
+  width: 100%;
+  height: calc(100vh - 56px);
+  border: none;
+  margin-top: 56px;
+}
+</style>
 </head>
+
 <body>
 
-<embed src="SweetBunny22.pdf" type="application/pdf">
+<div id="topbar">
+  <button onclick="setLight()">☀️ Modo claro</button>
+  <button onclick="setDark()">🌙 Modo oscuro</button>
+</div>
+
+<iframe src="https://docs.google.com/gview?embedded=1&url=https://Arizbeth24.github.io/sweetbunny22/SweetBunny22.pdf"></iframe>
+
+<script>
+function setDark() {
+  document.body.classList.add('dark');
+  localStorage.setItem('theme','dark');
+}
+
+function setLight() {
+  document.body.classList.remove('dark');
+  localStorage.setItem('theme','light');
+}
+
+if (localStorage.getItem('theme') === 'dark') {
+  document.body.classList.add('dark');
+}
+</script>
 
 </body>
 </html>
